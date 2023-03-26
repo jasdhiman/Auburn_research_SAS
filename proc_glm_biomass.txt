@@ -1,0 +1,52 @@
+%macro jas;
+ods pdf file=&file;
+proc import file='C:\Users\jzd0028\Desktop\Combined_biomass.xls'
+out=&data
+replace;
+range="A1:P31";
+proc glm data=&data;
+model &prop=&a;
+run;
+%mend jas;
+
+%let file='C:\Users\jzd0028\Desktop\MIT_dgw.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=dgw;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_dgw_PD.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=dgw|PD;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_dgw_BD.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=dgw|BD;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_PD.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=PD;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_PD_BD.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=PD|BD;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_MC.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=MC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\MIT_MC_BD.pdf';
+%let data=work.MIT;
+%let prop=MIT;
+%let a=MC|BD;
+%jas

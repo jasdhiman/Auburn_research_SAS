@@ -1,0 +1,98 @@
+/********************************
+ * Author: Jaskaran Dhiman      *
+ * Assignment: Final Project    *
+ * Grade:                       *
+ * Date: 11/20/2013             *
+ ********************************/
+
+/*ANOVA analysis*/
+
+%MACRO anova;
+ods listing close;
+proc import datafile=&inputfile
+out=&dataset
+replace;
+range="&range";
+run;
+proc sort data=&dataset
+out=&dataset;
+by Biomass;
+run;
+ods html file=&outfile;
+title &titleanova;
+proc anova data=&dataset;
+class Biomass;
+model &prop=Biomass;
+means Biomass/bon;
+run;
+title;
+title &title2;
+proc univariate data=&dataset;
+var &prop;
+run;
+title;
+ods html close;
+ods listing;
+%MEND anova;
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Temperature of Onset of Volatalization (TOV)';
+%LET titleanova='TOV';
+%LET inputfile='C:\Users\JAS\Desktop\TOV.xls';
+%LET dataset=work.TOVanova;
+%LET range=A1:B25;
+%LET prop=TOV;
+%LET outfile='C:\Users\JAS\Desktop\TOV.htm';
+%anova
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Moisture Content';
+%LET titleanova='Moisture Content';
+%LET inputfile='C:\Users\JAS\Desktop\MC.xls';
+%LET dataset=work.MCanova;
+%LET range=A1:B25;
+%LET prop=MC;
+%LET outfile='C:\Users\JAS\Desktop\MC.htm';
+%anova
+%LET title2='Descriptive Statistics: UNIVARIATE - Ash Content';
+%LET titleanova='Ash Content';
+%LET inputfile='C:\Users\JAS\Desktop\Ash.xls';
+%LET dataset=work.Ashanova;
+%LET range=A1:B25;
+%LET prop=Ash;
+%LET outfile='C:\Users\JAS\Desktop\Ash.htm';
+%anova
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Bulk Density';
+%LET titleanova='Bulk Density';
+%LET inputfile='C:\Users\JAS\Desktop\BD.xls';
+%LET dataset=work.BDanova;
+%LET range=A1:B25;
+%LET prop=Bulk_Density;
+%LET outfile='C:\Users\JAS\Desktop\BD.htm';
+%anova
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Energy Content';
+%LET titleanova='Energy Content';
+%LET inputfile='C:\Users\JAS\Desktop\EC.xls';
+%LET dataset=work.ECanova;
+%LET range=A1:B25;
+%LET prop=Energy_Content;
+%LET outfile='C:\Users\JAS\Desktop\EC.htm';
+%anova
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Particle Density';
+%LET titleanova='Particle Density';
+%LET inputfile='C:\Users\JAS\Desktop\PD.xls';
+%LET dataset=work.PDanova;
+%LET range=A1:B25;
+%LET prop=Particle_Density;
+%LET outfile='C:\Users\JAS\Desktop\PD.htm';
+%anova
+
+%LET title2='Descriptive Statistics: UNIVARIATE - Volatile Matter';
+%LET titleanova='Volatile Matter';
+%LET inputfile='C:\Users\JAS\Desktop\VM.xls';
+%LET dataset=work.VManova;
+%LET range=A1:B25;
+%LET prop=VM;
+%LET outfile='C:\Users\JAS\Desktop\VM.htm';
+%anova

@@ -1,0 +1,129 @@
+/********************************
+ * Author: Jaskaran Dhiman      *
+ * Research work                *
+ * Date: 01/30/2014             *
+ ********************************/
+
+/*ANOVA analysis*/
+
+%MACRO anova;
+ods listing close;
+proc import datafile=&inputfile
+out=&dataset
+replace;
+range="&range";
+run;
+ods html file=&outfile;
+proc anova data=&dataset;
+class Biomass;
+model &prop=Biomass;
+means Biomass/tukey;
+run;
+ods html close;
+ods listing;
+%MEND anova;
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.MCanova;
+%LET range=A1:P31;
+%LET prop=MC;
+%LET outfile='C:\Users\jzd0028\Desktop\MC.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.BDanova;
+%LET range=A1:P31;
+%LET prop=BD;
+%LET outfile='C:\Users\jzd0028\Desktop\BD.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.PDanova;
+%LET range=A1:P31;
+%LET prop=PD;
+%LET outfile='C:\Users\jzd0028\Desktop\PD.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.dgwanova;
+%LET range=A1:P31;
+%LET prop=dgw;
+%LET outfile='C:\Users\jzd0028\Desktop\dgw.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.ACanova;
+%LET range=A1:P31;
+%LET prop=AC;
+%LET outfile='C:\Users\jzd0028\Desktop\AC.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.ECanova;
+%LET range=A1:P31;
+%LET prop=EC;
+%LET outfile='C:\Users\jzd0028\Desktop\EC.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.VManova;
+%LET range=A1:P31;
+%LET prop=VM;
+%LET outfile='C:\Users\jzd0028\Desktop\VM.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.TORVanova;
+%LET range=A1:P31;
+%LET prop=TORV;
+%LET outfile='C:\Users\jzd0028\Desktop\TORV.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.TMWLanova;
+%LET range=A1:P31;
+%LET prop=TMWL;
+%LET outfile='C:\Users\jzd0028\Desktop\TMWL.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.TOXYanova;
+%LET range=A1:P31;
+%LET prop=TOXY;
+%LET outfile='C:\Users\jzd0028\Desktop\TOXY.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.TREanova;
+%LET range=A1:P31;
+%LET prop=TRE;
+%LET outfile='C:\Users\jzd0028\Desktop\TRE.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.TMAXanova;
+%LET range=A1:P31;
+%LET prop=TMAX;
+%LET outfile='C:\Users\jzd0028\Desktop\TMAX.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.AEanova;
+%LET range=A1:P31;
+%LET prop=AE;
+%LET outfile='C:\Users\jzd0028\Desktop\AE.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.Qanova;
+%LET range=A1:P31;
+%LET prop=Q;
+%LET outfile='C:\Users\jzd0028\Desktop\Q.htm';
+%anova
+
+%LET inputfile='C:\Users\jzd0028\Desktop\Combined_biomass.xls';
+%LET dataset=work.MITanova;
+%LET range=A1:P31;
+%LET prop=MIT;
+%LET outfile='C:\Users\jzd0028\Desktop\MIT.htm';
+%anova

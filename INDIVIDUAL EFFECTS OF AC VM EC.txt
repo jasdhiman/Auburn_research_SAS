@@ -1,0 +1,81 @@
+%macro jas;
+ods pdf file=&file;
+proc import file='C:\Users\jzd0028\Desktop\combined_all.xls'
+out=&data
+replace;
+range="A1:P40";
+proc glm data=&data;
+model &prop=&a;
+run;
+%mend jas;
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_AC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_VM.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=VM;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_EC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=EC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_AC_VM.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC VM;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_AC_EC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC EC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_EC_VM.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=EC VM;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_AC_VM_EC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC VM EC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_ACXEC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC|EC;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_ACXVM.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC|VM;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_ECXVM.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=EC|VM;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX_ACXVMXEC.pdf';
+%let data=work.TMAX;
+%let prop=TMAX;
+%let a=AC|EC|VM;
+%jas
+
+
+
+
+

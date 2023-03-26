@@ -1,0 +1,23 @@
+/*Regression Analysis*/
+
+ods graphics;
+proc import datafile='C:\Users\JAS\Desktop\combined.xls'
+out=work.reg
+replace;
+range="A1:H25";
+run;
+proc print data=work.reg;
+run;
+ods listing;
+ods html file='C:\Users\JAS\Desktop\Regression.html';
+title 'Multiple Linear Regression Analysis';
+proc reg data=work.reg;
+model TOV=MC Bulk_Density Particle_Density Ash VM Energy_Content/p partial;
+output out=work.RegAnal;
+plot TOV*(MC Bulk_Density Particle_Density Ash VM Energy_Content)/;
+run;
+title;
+ods html close;
+ods pdf close;
+ods graphics off;
+run;

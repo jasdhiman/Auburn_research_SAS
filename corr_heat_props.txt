@@ -1,0 +1,9 @@
+proc import datafile='C:\Users\jzd0028\Desktop\Combined_woody_nocorncobs.xls'
+out=work.corr11
+replace;
+range="A1:P10";
+run;
+ods html file='C:\Users\jzd0028\Desktop\woody_nocorncobs_corr.htm';
+proc corr data=worK.corr11;
+var AC AE BD dgw EC MC PD Q TMAX TMWL TORV TOXY TRE VM MIT;
+RUN;

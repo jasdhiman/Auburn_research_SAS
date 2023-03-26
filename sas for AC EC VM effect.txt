@@ -1,0 +1,40 @@
+%macro jas;
+ods html file=&file;
+proc import datafile='C:\Users\jzd0028\Desktop\combined_specific.xls'
+out=&data
+replace;
+range="A1:P25";
+proc glm data=&data;
+model &prop=AC EC VM AC|VM AC|EC EC|VM AC|EC|VM;
+run;
+%mend jas;
+
+%let file='C:\Users\jzd0028\Desktop\MIT.htm';
+%let data=work.MIT_specific;
+%let prop=MIT;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TORV.htm';
+%let data=work.TORV_specific;
+%let prop=TORV;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMWL.htm';
+%let data=work.TMWL_specific;
+%let prop=TMWL;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TOXY.htm';
+%let data=work.TOXY_specific;
+%let prop=TOXY;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TRE.htm';
+%let data=work.TRE_specific;
+%let prop=TRE;
+%jas
+
+%let file='C:\Users\jzd0028\Desktop\TMAX.htm';
+%let data=work.TMAX_specific;
+%let prop=TMAX;
+%jas
